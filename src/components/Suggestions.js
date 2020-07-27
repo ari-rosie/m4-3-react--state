@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const Wrapper = styled.ul `
+    width: 500px;
+    border: solid black 2px;
+    display: ${props => props.showSuggestion === true ? 'block' : 'none'};
+`;
+
 const Title = styled.li `    
     background-color: ${props => props.selection === props.title ? 'grey' : 'white'};
     cursor: pointer;
@@ -23,9 +29,10 @@ const Book = ({title, handleSelect, highlight, setHighlight}) => {
     );
 };
 
-const Suggestions = ({array, handleSelect, highlight, setHighlight}) => {    
+const Suggestions = ({array, handleSelect, highlight, setHighlight, showSuggestion}) => {    
+    console.log(showSuggestion);
     return (
-        <ul>
+        <Wrapper showSuggestion={showSuggestion}>
             {array.map((book => 
                 <Book 
                     key={`book-${array.indexOf(book)}`} 
@@ -35,7 +42,7 @@ const Suggestions = ({array, handleSelect, highlight, setHighlight}) => {
                     setHighlight={setHighlight}
                 />
             ))}
-        </ul>
+        </Wrapper>
     );
 };
 

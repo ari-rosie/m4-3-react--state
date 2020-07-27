@@ -6,8 +6,7 @@ import Suggestions from './Suggestions';
 const Wrapper = styled.div `
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 50px;
+    margin: 50px auto 0 auto;
     width: 600px;
 
     input {
@@ -32,7 +31,7 @@ const Typeahead = ({suggestions, handleSelect, input, setInput}) => {
     const [highlight, setHighlight] = useState('');
 
     const suggArr = handleTyping(suggestions, input);
-    useEffect(() => {
+    useEffect(() => {        
         setHighlight(suggArr[0]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [input]);
@@ -55,6 +54,8 @@ const Typeahead = ({suggestions, handleSelect, input, setInput}) => {
                 handleSelect={handleSelect}
                 highlight={highlight}
                 setHighlight={setHighlight}
+                showSuggestion={(suggArr.length > 0) ? true : false}
+
             />
         </Wrapper>
     );
