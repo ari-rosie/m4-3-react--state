@@ -18,7 +18,7 @@ const Book = ({title, handleSelect, highlight, setHighlight}) => {
             onMouseOver={(e) => {
                 setHighlight(e.target.title);
             }} 
-            onMouseOut={(e) => setHighlight('')}
+            // onMouseOut={(e) => setHighlight('')}
         >{title}</Title>
     );
 };
